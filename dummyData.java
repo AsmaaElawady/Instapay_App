@@ -34,4 +34,12 @@ public class dummyData {
     public void setMyWallet(WalletProvider myWallet) {
         this.myWallet = myWallet;
     }
+
+    public boolean checkWallet(String password) {
+        return myWallet.containsUser(password);
+    }
+
+    public boolean checkBank(String password) {
+        return mybank.containsUser(password);
+    }
 }
