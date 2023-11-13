@@ -19,6 +19,10 @@ public class Main {
         {
             m = new Register();
             m.takeUserGeneralData();
+        }else if(choice == 2)
+        {
+            m = new Login();
+            m.takeUserGeneralData();
         }
     }
     public static void main(String[] args) {
