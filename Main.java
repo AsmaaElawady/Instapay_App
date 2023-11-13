@@ -4,7 +4,6 @@ import java.util.Scanner;
 public class Main {
     ManagingSigning m;
     public void start()
-
     {
         System.out.println("welcome to Instapay");
         Scanner scanner = new Scanner(System.in);
@@ -25,4 +24,4 @@ public class Main {
         Main m = new Main();
         m.start();
     }
-    }
+}

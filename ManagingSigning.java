@@ -11,5 +11,4 @@ public abstract class ManagingSigning {
     }
     public abstract void takeUserGeneralData();
     public  abstract boolean validateData(String Id);
-
 }

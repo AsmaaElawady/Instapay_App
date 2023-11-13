@@ -5,6 +5,7 @@ public class Bank {
     {
         bankUsers.add(b);
     }
+
     public boolean containsUser(String id)
     {
         for(bankUser b : bankUsers)
@@ -14,4 +15,7 @@ public class Bank {
         return false;
     }
 
+    public ArrayList<bankUser> getBankUsers(){
+        return this.bankUsers;
+    }
 }

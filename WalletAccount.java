@@ -18,8 +18,8 @@ public class WalletAccount extends Account{
         this.walletId = walletId;
     }
 
-    public WalletAccount(double balance, String userName, String password, String email, Status status,String walletId, String provider) {
-        super(balance, userName, password, email, status);
+    public WalletAccount(double balance, String userName, String password, String email, Status status,String walletId, String provider, Services services) {
+        super(balance, userName, password, email, status, services);
         this.walletId = walletId;
         this.walletProvider = provider;
     }
@@ -30,5 +30,11 @@ public class WalletAccount extends Account{
         System.out.println("Wallet number : " + this.walletId);
         System.out.println("Wallet Provider : " + this.walletProvider);
 
+    }
+
+    @Override
+    public void viewServices() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'viewServices'");
     }
 }

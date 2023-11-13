@@ -73,7 +73,8 @@ public class Register extends ManagingSigning {
 
                 // need to get real balance from the bankAPI
                 // status also should be get from bankAPI
-                 a= new BankAccount(balance,userName, password, email, Status.DEFAULT, accID);
+                Services services = new BankAccountServices();
+                a= new BankAccount(balance,userName, password, email, Status.DEFAULT, accID, services);
                 System.out.println("Account Created successfully\npress 1 to proceed to your profile :)");
             }
             else if(isVerified && choiceAccount ==1)
@@ -84,7 +85,8 @@ public class Register extends ManagingSigning {
                 String provider = scanner.nextLine();
                 // need to get real balance from the bankAPI
                 // status also should be get from bankAPI
-                 a = new WalletAccount(balance,userName,password,email,Status.DEFAULT,walletNo,provider);
+                Services services = new WalletServices();
+                 a = new WalletAccount(balance,userName,password,email,Status.DEFAULT,walletNo,provider, services);
                 System.out.println("Account Created successfully\npress 1 to proceed to your profile :)");
 
             }
@@ -96,6 +98,7 @@ public class Register extends ManagingSigning {
             //should include try and catch to handle
             this.saveToDB(a);
             a.viewAccDetails();
+            a.viewServices();
         }
         else System.out.println("Unfortunately, this account does not exist, please contact your bank for further information");
     }
@@ -110,13 +113,12 @@ public class Register extends ManagingSigning {
     // problem here of not auth as authentication
     public boolean validateData(String Id){
         BankAuthentication auth = new BankAuthentication();
-        auth.getBank(data.getMybank());
+        auth.setBank(data.getMybank());
         return auth.authenticateProvidedInfo(Id);
     }
     // needs to be interface and the provider is used to know it is which wallet provider
     public boolean ValidateData(String phonenumber , String provider)
     {
-
          WalletAuthentication auth = new WalletAuthentication();
          auth.getWallet(data.getMyWallet());
         return  auth.authenticateProvidedInfo(phonenumber);

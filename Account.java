@@ -6,8 +6,9 @@ public abstract class Account {
     private String email;
     private Status status;
     private String instaPayId;
+    private Services services;
 
-    public Account(double balance, String userName, String password, String email, Status status) {
+    public Account(double balance, String userName, String password, String email, Status status, Services services) {
         counter++;
         this.balance = balance;
         this.userName = userName;
@@ -15,6 +16,7 @@ public abstract class Account {
         this.email = email;
         this.status = status;
         this.instaPayId = String.valueOf(counter);
+        this.services = services;
     }
     public void viewAccDetails()
     {
@@ -79,4 +81,9 @@ public abstract class Account {
     public void setInstaPayId(String instaPayId) {
         this.instaPayId = instaPayId;
     }
+
+    public Services getServices(){
+        return services;
+    }
+    public abstract void viewServices();
 }

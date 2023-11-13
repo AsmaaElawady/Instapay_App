@@ -1,5 +1,4 @@
 // this is for the bank class to have list of bankUsers
-
 public class bankUser {
     private String username;
     private String ID;
