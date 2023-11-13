@@ -2,7 +2,7 @@ import java.util.Scanner;
 
 public class ToBankTransaction extends Transaction{
     dummyData data = new dummyData();
-    DataBase db = new DataBase(data.getMybank().getBankUsers());
+    // DataBase db = new DataBase(data.getMybank().getBankUsers());
 
     private String recieverBankID;
 
@@ -42,7 +42,7 @@ public class ToBankTransaction extends Transaction{
 
     @Override
     public void transfer() {
-        db.updateBalance(recieverBankID, getAmount());
+        // db.updateBalance(recieverBankID, getAmount());
     }
     
 }
