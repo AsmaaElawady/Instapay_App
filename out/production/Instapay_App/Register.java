@@ -33,22 +33,23 @@ public class Register extends ManagingSigning {
     public void takeUserGeneralData() {
         System.out.println("Please enter the following information: ");
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Enter your Username: ");
+        System.out.print("Enter your Username: ");
         userName = scanner.nextLine();
         //while the password is not complex
         boolean checkPass = true;
         do {
-            System.out.println("Enter the desired password:");
+            
             System.out.println("Password should be a mix of lowercase and uppercase , special characters and numbers");
             System.out.println("password should be at least 8 characters");
+            System.out.print("Enter the desired password:");
             password = scanner.nextLine();
             checkPass = !checkingPassComplexity(password);
         }
         while(checkPass);
-        System.out.println("Enter your email: ");
+        System.out.print("Enter your email: ");
         email = scanner.nextLine();
         System.out.println("You want to register with a wallet or with your bank account?: ");
-        System.out.println("1-wallet\n2-Bank Account");
+        System.out.print("1-wallet\n2-Bank Account :");
         choiceAccount = scanner.nextInt();
         scanner.nextLine(); // Consume the newline character
 
@@ -59,20 +60,20 @@ public class Register extends ManagingSigning {
         boolean accountExists = true;
         if(choiceAccount ==1)
         {
-            System.out.println("Please enter the phone number you use for your wallet");
+            System.out.print("Please enter the phone number you use for your wallet:");
             walletNo= scanner.nextLine();
             accountExists = validateData(walletNo,"stc");
 
         }
         else if(choiceAccount == 2)
         {
-            System.out.println("Please enter you bank account ID to verify:");
+            System.out.print("Please enter you bank account ID to verify:");
             accID= scanner.nextLine();
             accountExists = validateData(accID);
         }
         if(accountExists) // create personal account on instapay
         {
-            System.out.println("Enter phone number to verify");
+            System.out.print("Enter phone number to verify:");
             phoneNumber= scanner.nextLine();
             //send otp
             boolean isVerified = verifyUser(phoneNumber);

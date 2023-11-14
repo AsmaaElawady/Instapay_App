@@ -37,4 +37,12 @@ public class WalletAccount extends Account{
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'viewServices'");
     }
+
+    @Override
+    public void withdraw(double amount) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'withdraw'");
+    }
+
+    
 }

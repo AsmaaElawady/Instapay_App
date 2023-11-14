@@ -26,6 +26,10 @@ public abstract class Account {
         System.out.println("status: " + status);
 
     }
+
+    public abstract void  withdraw(double amount);
+
+
     public static int getCounter() {
         return counter;
     }

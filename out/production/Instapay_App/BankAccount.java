@@ -35,4 +35,12 @@ public class BankAccount extends Account{
             System.out.println("Your Balance: " + super.getBalance());
         }
     }
+
+    
+
+    @Override
+    public void withdraw(double amount) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'withdraw'");
+    }
 }
