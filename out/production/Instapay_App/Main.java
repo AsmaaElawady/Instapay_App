@@ -4,7 +4,7 @@ import java.util.Scanner;
 public class Main {
     ManagingSigning m;
     ManageingView mView;
-    public void start()
+    public  Account start()
     {
         System.out.println("welcome to Instapay");
         Scanner scanner = new Scanner(System.in);
@@ -18,17 +18,18 @@ public class Main {
         if(choice == 1)
         {
             m = new Register();
-            m.takeUserGeneralData();
         }else if(choice == 2)
         {
             m = new Login();
             m.takeUserGeneralData();
         }
-
+        Account a =  m.enter();
+        System.out.println(a.getClass());
+        return a;
     }
     public static void main(String[] args) {
         Main m = new Main();
-        m.start();
+        Account acc=  m.start();
 
 
     }

@@ -1,3 +1,4 @@
+import javax.xml.crypto.Data;
 import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -138,7 +139,9 @@ public class Register extends ManagingSigning {
     }
     private void saveToDB(Account account)
     {
-        //add to db or list
+
+        DataBase db = new DataBase();
+        db.addUser(account);
     }
     public String getPassword() {
         return password;

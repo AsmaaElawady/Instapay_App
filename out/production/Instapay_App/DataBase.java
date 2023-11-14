@@ -35,5 +35,12 @@ public class DataBase {
         }
         return false;
     }
+    ArrayList<Account> instaPayAccounts = new ArrayList<>();
+
+    public  void addUser(Account a)
+    {
+        instaPayAccounts.add(a);
+        System.out.println("User added successfully to DB");
+    }
 
 }
