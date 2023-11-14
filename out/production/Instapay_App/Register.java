@@ -2,12 +2,20 @@ import javax.xml.crypto.Data;
 import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
+// need to get real balance from provider or bank
+// need to check phone number and email regex
+// need to handle validation through the interface
+
 public class Register extends ManagingSigning {
     private String userName;
     private String password;
     private String email;
     private int choiceAccount;
     private String ID;
+
+    private bankUser bu;
+    private walletUser wu;
     private dummyData data = new dummyData();
     //uses regex to check whether password is complex or not
     boolean checkingPassComplexity(String pass)
@@ -53,7 +61,7 @@ public class Register extends ManagingSigning {
         {
             System.out.println("Please enter the phone number you use for your wallet");
             walletNo= scanner.nextLine();
-            accountExists = validateData(walletNo);
+            accountExists = validateData(walletNo,"stc");
 
         }
         else if(choiceAccount == 2)
@@ -70,22 +78,16 @@ public class Register extends ManagingSigning {
             boolean isVerified = verifyUser(phoneNumber);
             if(isVerified && choiceAccount ==2)
             {
-                double balance = 12000.00;
-
-                // need to get real balance from the bankAPI
-                // status also should be get from bankAPI
+               double balance = bu.getBalance();
                 Services services = new BankAccountServices();
                 a= new BankAccount(balance,userName, password, email, Status.DEFAULT, accID, services);
                 System.out.println("Account Created successfully\npress 1 to proceed to your profile :)");
             }
             else if(isVerified && choiceAccount ==1)
             {
-                double balance = 12000.00;
-                // need a better way to handle such as enumeration
+                double balance = wu.getBalance();
                 System.out.println("Please enter the name of your wallet provider");
                 String provider = scanner.nextLine();
-                // need to get real balance from the bankAPI
-                // status also should be get from bankAPI
                 Services services = new WalletServices();
                  a = new WalletAccount(balance,userName,password,email,Status.DEFAULT,walletNo,provider, services);
                 System.out.println("Account Created successfully\npress 1 to proceed to your profile :)");
@@ -115,13 +117,18 @@ public class Register extends ManagingSigning {
     public boolean validateData(String Id){
         BankAuthentication auth = new BankAuthentication();
         auth.setBank(data.getMybank());
+
+        bu = data.getBankUserDetails(Integer.parseInt(Id));
         return auth.authenticateProvidedInfo(Id);
     }
+
     // needs to be interface and the provider is used to know it is which wallet provider
-    public boolean ValidateData(String phonenumber , String provider)
+    public boolean validateData(String phonenumber , String provider)
     {
          WalletAuthentication auth = new WalletAuthentication();
          auth.getWallet(data.getMyWallet());
+        wu = data.getWalletUserDetails(Integer.parseInt(phonenumber));
+
         return  auth.authenticateProvidedInfo(phonenumber);
     }
 

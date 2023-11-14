@@ -25,7 +25,7 @@ public class Login extends ManagingSigning{
 
     @Override
     public void takeUserGeneralData() {
-        // choose log in whit bank account or wallet
+        // choose log in with bank account or wallet
         System.out.println("You want to log in with a wallet or with your bank account?: ");
         System.out.println("1-wallet\n2-Bank Account");
         Scanner scanner = new Scanner(System.in);

@@ -40,7 +40,7 @@ public class DataBase {
     public  void addUser(Account a)
     {
         instaPayAccounts.add(a);
-        System.out.println("User added successfully to DB");
+        System.out.println(a.getBalance());
     }
 
 }
