@@ -4,6 +4,9 @@ public class WalletServices extends Services {
         this.walletNo = walletNo;
     }
 
+    public WalletServices() {
+    }
+
     @Override
     public void transfer() {
         // TODO Auto-generated method stub
