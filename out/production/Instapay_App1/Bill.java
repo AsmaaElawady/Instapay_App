@@ -19,6 +19,7 @@ public abstract  class Bill {
 
         if (choice.charAt(0) == 'y' || choice.charAt(0)=='Y') {
             account.withdraw(billAmount);
+        
         }
         
     }

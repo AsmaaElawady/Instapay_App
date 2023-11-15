@@ -29,7 +29,6 @@ public abstract class Account {
 
     public void  withdraw(double amount){
         DataBase db = new DataBase();
-        // System.out.println(getInstaPayId());
         db.updateBalanceForSender(getInstaPayId(),amount);
     }
 

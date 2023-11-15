@@ -32,6 +32,11 @@ public class ManageingView {
      }else if(userAccount instanceof WalletAccount){
       services = new WalletServices();
      }
+    if (userAccount instanceof BankAccount) {
+        services = new BankAccountServices();
+    }else if(userAccount instanceof WalletAccount){
+     services = new WalletServices();
+    }
 
 
       switch (choice) {
