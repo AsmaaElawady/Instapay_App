@@ -93,6 +93,7 @@ public class Register extends ManagingSigning {
                 String provider = scanner.nextLine();
                 services = new WalletServices(walletNo);
                  a = new WalletAccount(balance,userName,password,email,Status.DEFAULT,walletNo,provider, services);
+                services.setMyAcc(a);
                 System.out.println("Account Created successfully\npress 1 to proceed to your profile :)");
 
             }

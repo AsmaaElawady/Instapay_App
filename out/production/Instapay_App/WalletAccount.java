@@ -1,3 +1,5 @@
+import java.util.Scanner;
+
 public class WalletAccount extends Account{
     private String walletId;
     private String walletProvider;
@@ -34,8 +36,18 @@ public class WalletAccount extends Account{
 
     @Override
     public void viewServices() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'viewServices'");
+        System.out.println("Services: ");
+        System.out.println("1- Make Transaction.");
+        System.out.println("2- Check Balance.");
+        System.out.println("3- Pay Bils.");
+        System.out.print("Choose Service: ");
+        Scanner scanner = new Scanner(System.in);
+        int choice = scanner.nextInt();
+        if(choice == 1){
+            this.getServices().transfer();
+        }else if(choice == 2){
+            System.out.println("Your Balance: " + super.getBalance());
+        }
     }
 
     @Override

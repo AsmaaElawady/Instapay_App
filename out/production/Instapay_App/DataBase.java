@@ -6,6 +6,16 @@ public class DataBase {
     ArrayList<walletUser> walletUsers = new ArrayList<>();
     ArrayList<Account> instaPayAccounts = new ArrayList<>();
 
+    public boolean checkInstaPayAcc(String id){
+        for(Account acc: instaPayAccounts){
+            if (acc.getInstaPayId().equals(id)){
+                System.out.println(acc.getUserName());
+                return true;
+            }
+        }
+        return false;
+    }
+
     public void addBankUsers(ArrayList<bankUser> bankUsers){
          this.bankUsers = bankUsers;
     }
@@ -33,6 +43,16 @@ public class DataBase {
              }
          }
      }
+
+    public void updateBalanceForInstaPayAccReceiver(String id, double amount){
+        for(Account acc : instaPayAccounts){
+            if(acc.getInstaPayId().equals(id)){
+                double balance = acc.getBalance();
+                acc.setBalance(balance+=amount);
+                System.out.println(acc.getUserName() + " received the amount successfully!");
+            }
+        }
+    }
 
     public void updateBalanceForSender(String id, double amount){
         for(Account acc : instaPayAccounts){
@@ -106,23 +126,29 @@ public class DataBase {
 
     public DataBase()
     {
-         Services s = new WalletServices() ;
+        Services walletServices = new WalletServices() ;
+        Services bankServices = new WalletServices() ;
 
-        this.addUser(new BankAccount(1300 , "Marwa","maRwa@#23","email", Status.Active ,"1", s));
-        this.addUser(new BankAccount(1400 , "Marwa","maRwa@#23","email", Status.Active ,"2", s));
-        this.addUser(new BankAccount(1500 , "Marwa","maRwa@#23","email", Status.Active ,"3", s));
-        this.addUser(new BankAccount(1600 , "Marwa","maRwa@#23","email", Status.Active ,"4", s));
-        this.addUser(new BankAccount(1700 , "Marwa","maRwa@#23","email", Status.Active ,"5", s));
-        this.addUser(new BankAccount(1800 , "Marwa","maRwa@#23","email", Status.Active ,"6", s));
+        this.addUser(new BankAccount(1300 , "Marwa","maRwa@#23","email", Status.Active ,"1", bankServices));
+        this.addUser(new BankAccount(1400 , "Salma","maRwa@#23","email", Status.Active ,"2", bankServices));
+        this.addUser(new BankAccount(1500 , "Asmaa","maRwa@#23","email", Status.Active ,"3", bankServices));
+        this.addUser(new BankAccount(1600 , "Rawan","maRwa@#23","email", Status.Active ,"4", bankServices));
+        this.addUser(new BankAccount(1700 , "Rana","maRwa@#23","email", Status.Active ,"5", bankServices));
+        this.addUser(new BankAccount(1800 , "Esraa","maRwa@#23","email", Status.Active ,"6", bankServices));
 
-        this.addUser(new WalletAccount(1300 , "Marwa","maRwa@#23","email", Status.Active ,"1","provider", s));
-        this.addUser(new WalletAccount(1400 , "Marwa","maRwa@#23","email", Status.Active ,"2","provider", s));
-        this.addUser(new WalletAccount(1500 , "Marwa","maRwa@#23","email", Status.Active ,"3","provider", s));
-        this.addUser(new WalletAccount(1600 , "Marwa","maRwa@#23","email", Status.Active ,"4","provider", s));
-        this.addUser(new WalletAccount(1700 , "Marwa","maRwa@#23","email", Status.Active ,"5","provider", s));
-        this.addUser(new WalletAccount(1800 , "Marwa","maRwa@#23","email", Status.Active ,"6", "provider",s));
+        this.addUser(new WalletAccount(1300 , "Osama","maRwa@#23","email", Status.Active ,"7","provider", walletServices));
+        this.addUser(new WalletAccount(1400 , "Abod","maRwa@#23","email", Status.Active ,"8","provider", walletServices));
+        this.addUser(new WalletAccount(1500 , "Ahmad","maRwa@#23","email", Status.Active ,"9","provider", walletServices));
+        this.addUser(new WalletAccount(1600 , "Hesham","maRwa@#23","email", Status.Active ,"10","provider", walletServices));
+        this.addUser(new WalletAccount(1700 , "Yosra","maRwa@#23","email", Status.Active ,"11","provider", walletServices));
+        this.addUser(new WalletAccount(1800 , "Sara","maRwa@#23","email", Status.Active ,"12", "provider",walletServices));
 
-
+//        this.instaPayAccounts.add(new BankAccount(1300 , "Sara","maRwa@#23","email", Status.Active ,"1", bankServices));
+//        this.instaPayAccounts.add(new WalletAccount(1400 , "Marwa","maRwa@#23","email", Status.Active ,"2","provider", walletServices));
+//        this.instaPayAccounts.add(new BankAccount(1500 , "Rawan","maRwa@#23","email", Status.Active ,"3", bankServices));
+//        this.instaPayAccounts.add(new WalletAccount(1600 , "Salma","maRwa@#23","email", Status.Active ,"4","provider", walletServices));
+//        this.instaPayAccounts.add(new BankAccount(1700 , "Asmaa","maRwa@#23","email", Status.Active ,"5", bankServices));
+//        this.instaPayAccounts.add(new WalletAccount(1800 , "Rana","maRwa@#23","email", Status.Active ,"6", "provider",walletServices));
     }
 
 }
