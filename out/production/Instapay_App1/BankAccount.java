@@ -1,6 +1,7 @@
 import java.util.Scanner;
 
 public class BankAccount extends Account{
+
     public String getAccountID() {
         return accountID;
     }
@@ -38,9 +39,5 @@ public class BankAccount extends Account{
 
     
 
-    @Override
-    public void withdraw(double amount) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'withdraw'");
-    }
+
 }

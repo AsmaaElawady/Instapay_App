@@ -27,7 +27,11 @@ public abstract class Account {
 
     }
 
-    public abstract void  withdraw(double amount);
+    public void  withdraw(double amount){
+        DataBase db = new DataBase();
+        System.out.println(getInstaPayId());
+        db.updateBalanceForSender(getInstaPayId(),amount);
+    }
 
 
     public static int getCounter() {

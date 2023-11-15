@@ -39,10 +39,10 @@ public abstract class Services {
                 factory = new ElectricityFacility();
                 break;
             case 2:
-                factory = new GasFacility();
+                factory = new WaterFacility();
                 break;
             case 3:
-                factory = new WaterFacility();
+                factory = new GasFacility();
                 break;    
 
             default:

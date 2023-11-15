@@ -50,11 +50,5 @@ public class WalletAccount extends Account{
         }
     }
 
-    @Override
-    public void withdraw(double amount) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'withdraw'");
-    }
-
     
 }
