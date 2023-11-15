@@ -125,7 +125,13 @@ public class Register extends ManagingSigning {
         BankAuthentication auth = new BankAuthentication();
         auth.setBank(data.getMybank());
 
-        bu = data.getBankUserDetails(Integer.parseInt(this.ID));
+        try{
+        bu = data.getBankUserDetails(Integer.valueOf(this.ID));
+
+        }catch(NumberFormatException e){
+        System.out.println("in valid parsing");
+
+        }
         return auth.authenticateProvidedInfo(this.ID);
     }
 
@@ -135,8 +141,14 @@ public class Register extends ManagingSigning {
          WalletAuthentication auth = new WalletAuthentication();
          auth.setWallet(data.getMyWallet());
 
-          wu = data.getWalletUserDetails(Integer.parseInt(phonenumber));
+         try{
+             wu = data.getWalletUserDetails(Integer.valueOf(phonenumber));
 
+            
+         }catch(NumberFormatException e){
+        System.out.println("in valid parsing");
+         }
+         
         return  auth.authenticateProvidedInfo(phonenumber);
     }
 
