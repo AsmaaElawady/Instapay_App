@@ -1,8 +1,11 @@
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class ToBankTransaction extends Transaction{
-    dummyData data = new dummyData();
-    // DataBase db = new DataBase(data.getMybank().getBankUsers());
+    public ToBankTransaction(Account myAcc, DataBase db){
+        super.setSender(myAcc);
+        super.setDB(db);
+    }
 
     private String recieverBankID;
 
@@ -17,7 +20,7 @@ public class ToBankTransaction extends Transaction{
     @Override
     public void recieverInfo() {
         String id;
-        System.out.print("Enter the reciver bank ID: ");
+        System.out.print("Enter the receiver's bank ID: ");
         Scanner scanner = new Scanner(System.in);
         id = scanner.nextLine();
         setReciverBankID(id);
@@ -31,18 +34,15 @@ public class ToBankTransaction extends Transaction{
 
         while (!isAuthenticated) {
             System.out.println("No Bank User with this ID!");
-            // Assume recieverInfo updates the recieverBankID with new input.
             recieverInfo();
             isAuthenticated = auth.authenticateProvidedInfo(recieverBankID);
         }
-    
+
         System.out.println("Authentication successful!");
     }
-    
 
     @Override
     public void transfer() {
-        // db.updateBalance(recieverBankID, getAmount());
+        db.updateBalanceForBankReceiver(recieverBankID, getAmount());
     }
-    
 }

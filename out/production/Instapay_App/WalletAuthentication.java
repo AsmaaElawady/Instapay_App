@@ -5,7 +5,7 @@ public class WalletAuthentication implements Authentication {
     public boolean authenticateProvidedInfo(String ID) {
         return   w.containsUser(ID);
     }
-    public void  getWallet(WalletProvider w)
+    public void  setWallet(WalletProvider w)
     {
         this.w = w;
     }

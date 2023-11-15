@@ -2,7 +2,6 @@ import java.util.Scanner;
 
 
 public class Main {
-
     ManagingSigning m;
     ManageingView mView;
 
@@ -28,13 +27,9 @@ public class Main {
         Account a =  m.enter();
         System.out.println(a.getClass());
         return a;
-
-        
     }
+
     public static void main(String[] args) {
-
-        
-
         Main m = new Main();
         Account acc =  m.start();
         // something like this fo the bill 
@@ -42,7 +37,5 @@ public class Main {
         Facilities factory = new ElectricityFacility();
         Bill bill = factory.createBill(acc);
         bill.payBill();
-
-
     }
 }

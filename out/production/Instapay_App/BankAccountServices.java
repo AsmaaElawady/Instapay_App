@@ -1,6 +1,19 @@
 import java.util.Scanner;
 
 public class BankAccountServices extends Services {
+//    private BankAccount mybankAcc;
+
+//    public BankAccountServices(String myID) {
+//        this.myID = myID;
+//    }
+//    public void setMybankAcc(BankAccount mybankAcc){
+//        this.mybankAcc = mybankAcc;
+//    }
+//
+//    public BankAccount getMybankAcc(){
+//        return this.mybankAcc;
+//    }
+
     private Transaction transaction;
 
     @Override
@@ -11,7 +24,10 @@ public class BankAccountServices extends Services {
         Scanner scanner = new Scanner(System.in);
         int choice = scanner.nextInt();
         if(choice == 1){
-            transaction = new ToBankTransaction();
+            transaction = new ToBankTransaction(super.getMyAcc(), super.getDB());
+            transaction.makeTransaction();
+        }else if(choice == 2){
+            transaction = new ToWalletTransaction(super.getMyAcc(), super.getDB());
             transaction.makeTransaction();
         }
     }

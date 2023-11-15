@@ -8,6 +8,9 @@ import java.util.regex.Pattern;
 // need to handle validation through the interface
 
 public class Register extends ManagingSigning {
+    public DataBase db = new DataBase();
+    Services services;
+
     private String userName;
     private String password;
     private String email;
@@ -80,8 +83,9 @@ public class Register extends ManagingSigning {
             if(isVerified && choiceAccount ==2)
             {
                double balance = bu.getBalance();
-                Services services = new BankAccountServices();
+               services = new BankAccountServices();
                 a= new BankAccount(balance,userName, password, email, Status.DEFAULT, accID, services);
+                services.setMyAcc(a);
                 System.out.println("Account Created successfully\npress 1 to proceed to your profile :)");
             }
             else if(isVerified && choiceAccount ==1)
@@ -89,7 +93,7 @@ public class Register extends ManagingSigning {
                 double balance = wu.getBalance();
                 System.out.println("Please enter the name of your wallet provider");
                 String provider = scanner.nextLine();
-                Services services = new WalletServices();
+                services = new WalletServices(walletNo);
                  a = new WalletAccount(balance,userName,password,email,Status.DEFAULT,walletNo,provider, services);
                 System.out.println("Account Created successfully\npress 1 to proceed to your profile :)");
 
@@ -101,8 +105,11 @@ public class Register extends ManagingSigning {
             }
             //should include try and catch to handle
             this.saveToDB(a);
+            services.setDB(this.db);
             a.viewAccDetails();
-            a.viewServices();
+            while(true){
+                a.viewServices();
+            }
         }
         else System.out.println("Unfortunately, this account does not exist, please contact your bank for further information");
     }
@@ -127,7 +134,7 @@ public class Register extends ManagingSigning {
     public boolean validateData(String phonenumber , String provider)
     {
          WalletAuthentication auth = new WalletAuthentication();
-         auth.getWallet(data.getMyWallet());
+         auth.setWallet(data.getMyWallet());
         wu = data.getWalletUserDetails(Integer.parseInt(phonenumber));
 
         return  auth.authenticateProvidedInfo(phonenumber);
@@ -148,7 +155,7 @@ public class Register extends ManagingSigning {
     private void saveToDB(Account account)
     {
 
-        DataBase db = new DataBase();
+//        DataBase db = new DataBase();
         db.addUser(account);
     }
     public String getPassword() {
