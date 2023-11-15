@@ -1,14 +1,12 @@
 import java.util.Scanner;
 
 public class WalletServices extends Services {
-    private Transaction transaction;
     private String walletNo;
     public WalletServices(String walletNo) {
         this.walletNo = walletNo;
     }
 
-    public WalletServices() {
-    }
+    public WalletServices() {}
 
     @Override
     public void transfer() {

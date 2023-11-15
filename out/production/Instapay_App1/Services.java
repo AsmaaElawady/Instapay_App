@@ -1,8 +1,8 @@
 import java.util.Scanner;
 
 public abstract class Services {
+    public Transaction transaction;
     private Account myAcc;
-
     private DataBase db;
 
     public void setMyAcc(Account myAcc){
@@ -21,6 +21,15 @@ public abstract class Services {
     public DataBase getDB(){
         return this.db;
     }
+
+    public void setTransaction(Transaction transaction){
+        this.transaction = transaction;
+    }
+
+    public Transaction getTransaction(){
+        return this.transaction;
+    }
+
     public abstract void transfer();
 
     public void payBills(Account acc) {

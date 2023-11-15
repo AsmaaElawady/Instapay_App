@@ -5,8 +5,7 @@ public class Main {
     ManagingSigning m;
     
 
-    public  Account start()
-    {
+    public  Account start() {
         System.out.println("welcome to Instapay");
         Scanner scanner = new Scanner(System.in);
         int choice;

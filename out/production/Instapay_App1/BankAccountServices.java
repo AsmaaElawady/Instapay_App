@@ -1,8 +1,6 @@
 import java.util.Scanner;
 
 public class BankAccountServices extends Services {
-    private Transaction transaction;
-
     @Override
     public void transfer() {
         System.out.println("1- Transfer to Bank.");

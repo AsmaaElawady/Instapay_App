@@ -127,7 +127,7 @@ public class DataBase {
     public DataBase()
     {
         Services walletServices = new WalletServices() ;
-        Services bankServices = new WalletServices() ;
+        Services bankServices = new BankAccountServices();
 
         this.addUser(new BankAccount(1300 , "Marwa","maRwa@#23","email", Status.Active ,"1", bankServices));
         this.addUser(new BankAccount(1400 , "Salma","maRwa@#23","email", Status.Active ,"2", bankServices));
