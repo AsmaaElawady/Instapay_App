@@ -1,4 +1,3 @@
-import javax.xml.crypto.Data;
 import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -17,8 +16,6 @@ public class Register extends ManagingSigning {
     private int choiceAccount;
     private String ID;
 
-    private bankUser bu;
-    private walletUser wu;
     private dummyData data = new dummyData();
     //uses regex to check whether password is complex or not
     boolean checkingPassComplexity(String pass)
@@ -70,9 +67,10 @@ public class Register extends ManagingSigning {
         }
         else if(choiceAccount == 2)
         {
-            System.out.print("Please enter you bank account ID to verify:");
-            accID= scanner.nextLine();
-            accountExists = validateData(accID);
+
+            System.out.println("Please enter you bank account ID to verify:");
+            ID= scanner.nextLine();
+            accountExists = validateData();
         }
         if(accountExists) // create personal account on instapay
         {
@@ -122,12 +120,12 @@ public class Register extends ManagingSigning {
     //// i don't know how to handle the idea of validating when it is bank and when it is wallet
     @Override
     // problem here of not auth as authentication
-    public boolean validateData(String Id){
+    public boolean validateData(){
         BankAuthentication auth = new BankAuthentication();
         auth.setBank(data.getMybank());
 
-        bu = data.getBankUserDetails(Integer.parseInt(Id));
-        return auth.authenticateProvidedInfo(Id);
+        bu = data.getBankUserDetails(Integer.parseInt(this.ID));
+        return auth.authenticateProvidedInfo(this.ID);
     }
 
     // needs to be interface and the provider is used to know it is which wallet provider
@@ -135,7 +133,8 @@ public class Register extends ManagingSigning {
     {
          WalletAuthentication auth = new WalletAuthentication();
          auth.setWallet(data.getMyWallet());
-        wu = data.getWalletUserDetails(Integer.parseInt(phonenumber));
+
+          wu = data.getWalletUserDetails(Integer.parseInt(phonenumber));
 
         return  auth.authenticateProvidedInfo(phonenumber);
     }

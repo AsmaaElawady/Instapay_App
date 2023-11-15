@@ -22,10 +22,9 @@ public class Main {
         }else if(choice == 2)
         {
             m = new Login();
-            m.takeUserGeneralData();
         }
         Account a =  m.enter();
-        System.out.println(a.getClass());
+        System.out.println(a.getUserName() + " "+ a.getBalance());
         return a;
     }
 
