@@ -25,72 +25,35 @@ public class Login extends ManagingSigning{
 
     @Override
     public void takeUserGeneralData() {
-        // choose log in with bank account or wallet
-        System.out.println("You want to log in with a wallet or with your bank account?: ");
-        System.out.println("1-wallet\n2-Bank Account");
-        Scanner scanner = new Scanner(System.in);
-        int choiceAccount = scanner.nextInt();
-        scanner.nextLine();
-        if(choiceAccount ==1)
-        {
-            System.out.println("Please enter the phone number you use for your wallet");
-            String walletNo= scanner.nextLine();
-            boolean accountExists = validateData(walletNo);
-            if(accountExists)
-            {
-                System.out.println("Please enter your password");
-                password = scanner.nextLine();
-                boolean passwordCorrect = validateData(password);
-                if(passwordCorrect)
-                {
-                    System.out.println("You have successfully logged in");
-                    type = "wallet";
-                }
-                else
-                {
-                    System.out.println("Wrong password");
-                }
-            }
-            else
-            {
-                System.out.println("This wallet does not exist");
-            }
-        }
-        else if(choiceAccount == 2)
-        {
-            System.out.println("Please enter you bank account ID to verify:");
-            String accID = scanner.nextLine();
-            boolean accountExists = validateData(accID);
-            if(accountExists)
-            {
-                System.out.println("Please enter your password");
-                password = scanner.nextLine();
-                boolean passwordCorrect = validateData(password);
-                if(passwordCorrect)
-                {
-                    System.out.println("You have successfully logged in");
-                    type = "bank";
-                }
-                else
-                {
-                    System.out.println("Wrong password");
-                }
-            }
-            else
-            {
-                System.out.println("This account does not exist");
-            }
-        }
-    }
+          Scanner scanner = new Scanner(System.in);
 
-    public  boolean validateData(String Id){
-        if(type == "wallet")
+        System.out.println("Enter your username: ");
+        userName =  scanner.nextLine();
+        System.out.println("Enter your password: ");
+        password =  scanner.nextLine();
+        if(validateData())
         {
-            return data.checkWallet(Id);
+            System.out.println("welcome to instapay");
         }
         else
         {
-            return data.checkBank(Id);
+            System.out.println("Sorry this account doesn't exist, try again later");
         }
+
+    }
+
+    public boolean validateData()
+    {
+        DataBase db = new DataBase();
+        if(db.foundUSname(this.userName))
+        {
+            if(password.equals(db.getAccPass(userName))) {
+                a = db.getAccount(userName);
+
+                return true;
+            }
+
+        }
+        return false;
     }
 }

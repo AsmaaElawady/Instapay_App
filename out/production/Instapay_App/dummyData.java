@@ -10,13 +10,14 @@ public class dummyData {
         mybank.addBankUser(new bankUser("asmaa", "5", "marwa2003", 17000));
         mybank.addBankUser(new bankUser("osama", "6", "marwa2003", 18000));
 
-
         myWallet.addWallet(new walletUser("marwa", "1", 12000));
         myWallet.addWallet(new walletUser("esraa", "2", 12000));
         myWallet.addWallet(new walletUser("salma", "3", 12000));
         myWallet.addWallet(new walletUser("rawan", "4", 12000));
         myWallet.addWallet(new walletUser("asmaa", "5", 12000));
         myWallet.addWallet(new walletUser("osama", "6", 12000));
+
+
     }
 
     public Bank getMybank() {
