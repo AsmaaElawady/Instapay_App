@@ -104,11 +104,11 @@ public class Register extends ManagingSigning {
             }
             //should include try and catch to handle
             this.saveToDB(a);
-            services.setDB(this.db);
             a.viewAccDetails();
-            while(true){
-                a.viewServices();
-            }
+            
+            // while(true){
+            //     a.viewServices();
+            // }
         }
         else System.out.println("Unfortunately, this account does not exist, please contact your bank for further information");
     }
