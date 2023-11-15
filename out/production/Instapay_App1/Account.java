@@ -1,4 +1,6 @@
 public abstract class Account {
+    private DataBase db;
+
     private static int counter = 0;
     private double balance; // will get it from the bank/ wallet provider
     private String userName;
@@ -7,6 +9,14 @@ public abstract class Account {
     private Status status;
     private String instaPayId;
     private Services services;
+
+    public void setDB(DataBase db){
+        this.db = db;
+    }
+
+    public DataBase getDB(){
+        return this.db;
+    }
 
     public Account(double balance, String userName, String password, String email, Status status, Services services) {
         counter++;
@@ -24,11 +34,10 @@ public abstract class Account {
         System.out.println("Instapay ID: " + instaPayId);
         System.out.println("balance: " + balance);
         System.out.println("status: " + status);
-
     }
 
     public void  withdraw(double amount){
-        DataBase db = new DataBase();
+//        System.out.println(getInstaPayId());
         db.updateBalanceForSender(getInstaPayId(),amount);
     }
 

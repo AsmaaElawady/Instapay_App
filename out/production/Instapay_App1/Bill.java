@@ -6,8 +6,10 @@ public abstract  class Bill {
 
 
     public Bill(Account account) {
+//        System.out.println("bill" + account.getUserName());
         this.account = account;
     }
+
     public abstract void calculateTotal();
 
     public void payBill(){
@@ -19,7 +21,6 @@ public abstract  class Bill {
 
         if (choice.charAt(0) == 'y' || choice.charAt(0)=='Y') {
             account.withdraw(billAmount);
-        
         }
         
     }

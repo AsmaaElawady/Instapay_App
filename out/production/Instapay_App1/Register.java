@@ -102,9 +102,11 @@ public class Register extends ManagingSigning {
             {
                 System.out.println("Unfortunately, couldn't verify , try again later");
             }
+
             //should include try and catch to handle
             this.saveToDB(a);
             services.setDB(this.db);
+            a.setDB(this.db);
             a.viewAccDetails();
             
             // while(true){

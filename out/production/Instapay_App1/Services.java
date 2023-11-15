@@ -6,7 +6,7 @@ public abstract class Services {
     private DataBase db;
 
     public void setMyAcc(Account myAcc){
-        System.out.println(myAcc.getUserName());
+//        System.out.println(myAcc.getUserName());
         this.myAcc = myAcc;
     }
 

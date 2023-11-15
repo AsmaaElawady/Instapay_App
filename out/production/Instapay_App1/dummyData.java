@@ -34,11 +34,31 @@ public class dummyData {
 
     public bankUser getBankUserDetails(int id)
     {
-        return mybank.bankUsers.get(id-1);
+        try
+        {
+            return mybank.bankUsers.get(id-1);
+        }
+        catch (Exception e)
+        {
+            System.out.println("Sorry this user doesn't exist");
+            System.exit(0);
+
+        }
+        return null;
     }
     public walletUser getWalletUserDetails(int id)
     {
-        return myWallet.walletUsers.get(id-1);
+        try
+        {
+            return myWallet.walletUsers.get(id-1);
+        }
+        catch (Exception e)
+        {
+            System.out.println("Sorry this user doesn't exist");
+            System.exit(0);
+
+        }
+        return null;
     }
     public void setMyWallet(WalletProvider myWallet) {
         this.myWallet = myWallet;

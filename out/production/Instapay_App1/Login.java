@@ -54,6 +54,7 @@ public class Login extends ManagingSigning{
                 a = db.getAccount(userName);
                 a.getServices().setMyAcc(a);
                 a.getServices().setDB(this.db);
+                a.setDB(db);
                 return true;
             }
         }

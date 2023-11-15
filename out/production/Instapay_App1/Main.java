@@ -3,7 +3,6 @@ import java.util.Scanner;
 
 public class Main {
     ManagingSigning m;
-    
 
     public  Account start() {
         System.out.println("welcome to Instapay");
@@ -23,8 +22,14 @@ public class Main {
             m = new Login();
         }
         Account a =  m.enter();
-        System.out.println(a.getUserName() + " "+ a.getBalance());
-        return a;
+
+        if(a!= null)
+        {
+            System.out.println(a.getUserName() + " "+ a.getBalance());
+            return a;
+        }
+        System.exit(0);
+        return null;
     }
 
     public static void main(String[] args) {
