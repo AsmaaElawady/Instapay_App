@@ -3,7 +3,7 @@ import java.util.Scanner;
 
 public class Main {
     ManagingSigning m;
-    ManageingView mView;
+    
 
     public  Account start()
     {
@@ -34,10 +34,24 @@ public class Main {
         
         Main m = new Main();
         Account acc =  m.start();
-        // something like this fo the bill 
-        // Account account = new BankAccount(1000.0); // Assume BankAccount is a subclass of Account
-        Facilities factory = new ElectricityFacility();
-        Bill bill = factory.createBill(acc);
-        bill.payBill();
+
+        System.out.println("\n");
+
+        ManageingView mView = new ManageingView(acc);
+        while (true) {
+            mView.startMakeServices();
+
+            Scanner scanner = new Scanner(System.in);
+            int choice;
+
+            System.out.println("To continue make services enter 1 to exist enter 2:");
+            choice = scanner.nextInt();
+            if (choice == 1) {
+                continue;
+            }else{
+                break;
+            }
+        }
+        
     }
 }

@@ -15,7 +15,7 @@ public class ManageingView {
         userAccount.viewAccDetails();
      }
 
-     public void AvailableServices(){ //depends on the account type
+     public void startMakeServices(){ //depends on the account type
      int choice;
    
       Scanner scanner = new Scanner(System.in);
@@ -36,7 +36,7 @@ public class ManageingView {
 
       switch (choice) {
          case 1:
-            userAccount.getBalance();
+            System.out.println("Your Balance : "+userAccount.getBalance());
             break;
          case 2:
             services.payBills(userAccount);
@@ -63,9 +63,6 @@ public class ManageingView {
    }
 
   
-public static void main(String[] args){
-         System.out.print("1-check your balance\n" + "2-pay Facility bill\n"+"3-Money Transaction\n");
 
-}
     
 }
