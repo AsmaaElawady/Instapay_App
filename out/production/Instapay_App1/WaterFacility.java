@@ -10,7 +10,8 @@ public class WaterFacility  implements Facilities{
         Scanner scanner = new Scanner(System.in);
         int choice;
 
-        System.out.println("Types of service   1- Smart card 2- Bill");
+        System.out.println("Types of service:\n"  +  "1- Smart card\n" + "2- Bill\n");
+        
         while (true) {
             System.out.print("Enter your choice:");
             choice = scanner.nextInt();

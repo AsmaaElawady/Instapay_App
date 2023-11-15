@@ -8,18 +8,18 @@ public class ElectricityFacility implements Facilities{
         Scanner scanner = new Scanner(System.in);
         int choice;
 
-        System.out.println("Types of service   1-Smart card 2-Bill 3-Smart meter");
-        System.out.print("Enter your choice:");
-        choice = scanner.nextInt();
+        System.out.println("Types of service:\n" + "1-Smart card\n" + "2-Bill\n" + "3-Smart meter\n");
+
+        
 
         while (true) {
             System.out.print("Enter your choice:");
             choice = scanner.nextInt();
-            if (choice != 1 || choice != 2 || choice != 3) {
+            if (choice == 1 || choice == 2 || choice == 3) {
+                break;
+            }else {
                 System.out.print("invalid choice:");
                 continue;
-            }else {
-                break;
             }
         }
 

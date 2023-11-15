@@ -1,3 +1,5 @@
+import java.util.Scanner;
+
 public abstract class Services {
     private Account myAcc;
 
@@ -20,5 +22,33 @@ public abstract class Services {
         return this.db;
     }
     public abstract void transfer();
-    public void payBills() {} ////////////////////////
+
+    public void payBills(Account acc) {
+
+        Scanner scanner = new Scanner(System.in);
+        
+
+        System.out.println("Chosse one of these facilites:");
+        System.out.println("1- Electricity\n"+"2-Water\n"+"3-Gas");
+        int choice;
+        choice = scanner.nextInt();
+
+        Facilities factory = null;
+        switch (choice) {
+            case 1:
+                factory = new ElectricityFacility();
+                break;
+            case 2:
+                factory = new GasFacility();
+                break;
+            case 3:
+                factory = new WaterFacility();
+                break;    
+
+            default:
+                break;
+        }
+        Bill bill = factory.createBill(acc);
+        bill.payBill();
+    } ////////////////////////
 }
